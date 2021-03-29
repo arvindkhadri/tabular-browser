@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Route, Switch, useRouteMatch } from "react-router";
 import { Link } from "react-router-dom";
+import FormLoader from "./FormLoader";
 import TableLoader from "./TableLoader";
 
-export default function SchemaLoader() {
+export default function SchemaLoader(props: { [key: string]: any }) {
   let { path, url } = useRouteMatch();
 
   const [schema, setSchema] = useState([]);
@@ -18,7 +19,33 @@ export default function SchemaLoader() {
       })
       .catch((error) => console.log(error));
   }, []);
+  if (props.read) {
+    return (
+      <>
+        <ul>
+          {schema.map((scheme: any, key) => {
+            return (
+              <li key={key}>
+                <Link to={`${url}/${scheme.tablename}`}>
+                  {scheme.tablename}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
 
+        <Switch>
+          <Route exact path={path}>
+            <h3>Please select a table.</h3>
+          </Route>
+
+          <Route path={`${path}/:tableName`}>
+            <TableLoader read={props.read} />
+          </Route>
+        </Switch>
+      </>
+    );
+  }
   return (
     <>
       <ul>
@@ -33,10 +60,11 @@ export default function SchemaLoader() {
 
       <Switch>
         <Route exact path={path}>
-          <h3>Please select a topic.</h3>
+          <h3>Please select a table.</h3>
         </Route>
+
         <Route path={`${path}/:tableName`}>
-          <TableLoader />
+          <FormLoader />
         </Route>
       </Switch>
     </>

@@ -13,6 +13,9 @@ export default function NestingRoutes() {
           <li>
             <Link to="/dataViewer">Data viewer</Link>
           </li>
+          <li>
+            <Link to="/dataLoader">Data loader</Link>
+          </li>
         </ul>
 
         <hr />
@@ -22,7 +25,10 @@ export default function NestingRoutes() {
             <Home />
           </Route>
           <Route path="/dataViewer">
-            <SchemaLoader />
+            <SchemaLoader read={true} />
+          </Route>
+          <Route path="/dataLoader">
+            <SchemaLoader read={false} />
           </Route>
         </Switch>
       </div>

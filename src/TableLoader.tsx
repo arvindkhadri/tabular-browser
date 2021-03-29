@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { useParams } from "react-router";
 
-export default function TableLoader() {
+export default function TableLoader(props: { [key: string]: any }) {
   let { tableName }: { [key: string]: any } = useParams();
   const [schema, setSchema] = useState([]);
 
