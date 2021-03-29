@@ -81,7 +81,7 @@ export default function TableLoader(props: { [key: string]: any }) {
           <span>Filter</span>
           <Form.Group controlId="exampleForm.SelectCustom">
             <Row>
-              <Col lg="2">
+              <Col lg="3" md="3" sm="2">
                 <Form.Label>Column name</Form.Label>
                 <Form.Control as="select" name="columnSelect">
                   {schema.length !== 0 &&
@@ -94,7 +94,7 @@ export default function TableLoader(props: { [key: string]: any }) {
                     })}
                 </Form.Control>
               </Col>
-              <Col lg="2">
+              <Col lg="3" md="3" sm="2">
                 <Form.Label>Operation</Form.Label>
                 <Form.Control as="select" name="opSelect">
                   {schema.length !== 0 &&
@@ -107,7 +107,7 @@ export default function TableLoader(props: { [key: string]: any }) {
                     })}
                 </Form.Control>
               </Col>
-              <Col lg="2">
+              <Col lg="3" md="3" sm="2">
                 <Form.Label>Value</Form.Label>
                 <Form.Control type="text" name="value"></Form.Control>
               </Col>
@@ -118,7 +118,7 @@ export default function TableLoader(props: { [key: string]: any }) {
           <span>Sort</span>
           <Form.Group controlId="exampleForm.SelectSort">
             <Row>
-              <Col lg="2">
+              <Col lg="3" md="3" sm="2">
                 <Form.Label>Column name</Form.Label>
                 <Form.Control as="select" name="sortColumnSelect">
                   {schema.length !== 0 &&
@@ -131,7 +131,7 @@ export default function TableLoader(props: { [key: string]: any }) {
                     })}
                 </Form.Control>
               </Col>
-              <Col lg="2">
+              <Col lg="3" md="3" sm="2">
                 <Form.Label>Direction</Form.Label>
                 <Form.Control as="select" name="sortSelect">
                   <option value="">--select sort order--</option>
