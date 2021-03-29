@@ -49,10 +49,17 @@ export default function FormLoader() {
       event.preventDefault();
       formData = new FormData(event.target);
       const data = Object.fromEntries(formData.entries());
-      formDataObj = Object.keys(data).map((key) => ({
-        name: key,
-        value: data[key],
-      }));
+      formDataObj = Object.keys(data)
+        .map((key) => {
+          if (data[key]) {
+            return {
+              name: key,
+              value: data[key],
+            };
+          }
+          return false;
+        })
+        .filter((item) => item);
       console.log(data);
       console.log(formDataObj);
     }
@@ -89,18 +96,23 @@ export default function FormLoader() {
 
   return (
     <>
+      <h4>Insert a row of {tableName}.</h4>
       <Form onSubmit={createRow}>
         {schema.length !== 0 &&
           schema.map((scheme: { [key: string]: any }, index) => {
             return (
               <Form.Row key={index}>
                 <Form.Group as={Col} controlId={scheme.column_name}>
-                  <Form.Label>{scheme.column_name}</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name={scheme.column_name}
-                    placeholder={scheme.data_type}
-                  />
+                  <Col md={1} lg={1} sm={2}>
+                    <Form.Label>{scheme.column_name}</Form.Label>
+                  </Col>
+                  <Col md={4} lg={4} sm={3}>
+                    <Form.Control
+                      type="text"
+                      name={scheme.column_name}
+                      placeholder={scheme.data_type}
+                    />
+                  </Col>
                 </Form.Group>
               </Form.Row>
             );

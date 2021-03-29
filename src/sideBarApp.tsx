@@ -45,7 +45,11 @@ export default function NestingRoutes() {
 function Home() {
   return (
     <div>
-      <h2>Home</h2>
+      <h2>Welcome to tabular.</h2>
+      <span>
+        Tabular is a generic data browser. One can browse all the tables under
+        the public schema. A user can also insert data into a said table.
+      </span>
     </div>
   );
 }

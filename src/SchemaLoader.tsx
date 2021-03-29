@@ -43,7 +43,7 @@ export default function SchemaLoader(props: { [key: string]: any }) {
           <div>
             <Switch>
               <Route exact path={path}>
-                <h3>Please select a table.</h3>
+                <h3>Please select a table to view data.</h3>
               </Route>
 
               <Route path={`${path}/:tableName`}>
@@ -77,7 +77,7 @@ export default function SchemaLoader(props: { [key: string]: any }) {
         <div>
           <Switch>
             <Route exact path={path}>
-              <h3>Please select a table.</h3>
+              <h3>Please select a table for insertion.</h3>
             </Route>
 
             <Route path={`${path}/:tableName`}>
