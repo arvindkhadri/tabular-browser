@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Col } from "react-bootstrap";
 import { Route, Switch, useRouteMatch } from "react-router";
 import { Link } from "react-router-dom";
 import FormLoader from "./FormLoader";
@@ -22,51 +23,69 @@ export default function SchemaLoader(props: { [key: string]: any }) {
   if (props.read) {
     return (
       <>
-        <ul>
-          {schema.map((scheme: any, key) => {
-            return (
-              <li key={key}>
-                <Link to={`${url}/${scheme.tablename}`}>
-                  {scheme.tablename}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <Col md={2} lg={2} style={{ borderRight: "2px solid" }}>
+          <h4>List of tables from database</h4>
+          <div style={{ height: "100vh" }}>
+            <ul>
+              {schema.map((scheme: any, key) => {
+                return (
+                  <li key={key}>
+                    <Link to={`${url}/${scheme.tablename}`}>
+                      {scheme.tablename}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </Col>
+        <Col md={10} lg={9}>
+          <div>
+            <Switch>
+              <Route exact path={path}>
+                <h3>Please select a table.</h3>
+              </Route>
 
-        <Switch>
-          <Route exact path={path}>
-            <h3>Please select a table.</h3>
-          </Route>
-
-          <Route path={`${path}/:tableName`}>
-            <TableLoader read={props.read} />
-          </Route>
-        </Switch>
+              <Route path={`${path}/:tableName`}>
+                <TableLoader read={props.read} />
+              </Route>
+            </Switch>
+          </div>
+        </Col>
       </>
     );
   }
   return (
     <>
-      <ul>
-        {schema.map((scheme: any, key) => {
-          return (
-            <li key={key}>
-              <Link to={`${url}/${scheme.tablename}`}>{scheme.tablename}</Link>
-            </li>
-          );
-        })}
-      </ul>
+      <Col md={2} lg={2} style={{ borderRight: "2px solid" }}>
+        <h4>List of tables from database</h4>
+        <div style={{ height: "100vh" }}>
+          <ul>
+            {schema.map((scheme: any, key) => {
+              return (
+                <li key={key}>
+                  <Link to={`${url}/${scheme.tablename}`}>
+                    {scheme.tablename}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </Col>
+      <Col md={10} lg={9}>
+        <div>
+          <Switch>
+            <Route exact path={path}>
+              <h3>Please select a table.</h3>
+            </Route>
 
-      <Switch>
-        <Route exact path={path}>
-          <h3>Please select a table.</h3>
-        </Route>
-
-        <Route path={`${path}/:tableName`}>
-          <FormLoader />
-        </Route>
-      </Switch>
+            <Route path={`${path}/:tableName`}>
+              <FormLoader />
+            </Route>
+          </Switch>
+        </div>
+      </Col>
     </>
   );
 }

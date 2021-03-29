@@ -1,4 +1,5 @@
 import React from "react";
+import { Container, Row } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import SchemaLoader from "./SchemaLoader";
 
@@ -19,18 +20,23 @@ export default function NestingRoutes() {
         </ul>
 
         <hr />
-
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/dataViewer">
-            <SchemaLoader read={true} />
-          </Route>
-          <Route path="/dataLoader">
-            <SchemaLoader read={false} />
-          </Route>
-        </Switch>
+        <Container fluid>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/dataViewer">
+              <Row>
+                <SchemaLoader read={true} />
+              </Row>
+            </Route>
+            <Route path="/dataLoader">
+              <Row>
+                <SchemaLoader read={false} />
+              </Row>
+            </Route>
+          </Switch>
+        </Container>
       </div>
     </Router>
   );
