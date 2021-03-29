@@ -11,7 +11,7 @@ export default function SchemaLoader(props: { [key: string]: any }) {
   const [schema, setSchema] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/schema", {
+    fetch(`${process.env.REACT_APP_API_URL}/schema`, {
       method: "GET",
     })
       .then((res) => res.json())

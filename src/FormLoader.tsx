@@ -7,7 +7,7 @@ export default function FormLoader() {
   const [schema, setSchema] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/query", {
+    fetch(`${process.env.REACT_APP_API_URL}/query`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -57,7 +57,7 @@ export default function FormLoader() {
       console.log(formDataObj);
     }
 
-    fetch("http://localhost:3000/query", {
+    fetch(`${process.env.REACT_APP_API_URL}/query`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
